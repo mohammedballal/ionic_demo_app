@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-assertive">
+    <h1 class="title">Select One Option</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeOption()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <ion-list>
+          <ion-radio ng-repeat="abc in item.sub" ng-model="$parent.$parent.onechoice.sub" ng-value="{{abc.sub_id}}">{{abc.sub_name}} <span class="item-note">£{{abc.sub_price|number:2}}</span></ion-radio>
+      </ion-list>
+
+      <!--<div class="bar bar-footer bar-dark footer-buttons">-->
+          <!--<div class="row">-->
+              <!--<div class="col col-75">-->
+                  <!--<div class="button-bar">-->
+                  <!--<button class="button button-energized">Add to basket</button>-->
+                      <!--</div>-->
+              <!--</div>-->
+              <!--<div class="col">.col</div>-->
+          <!--</div>-->
+      <!--</div>-->
+
+
+
+      <!--<div class="bar bar-footer bar-dark">-->
+          <!--<div class="button-bar">-->
+          <!--<button class="button button-small button-energized disabled">Add to basket</button>-->
+          <!--</div>-->
+      <!--</div>-->
+
+
+
+  </ion-content>
+    <div class="bar bar-footer">
+        <div class="bar bar-footer">
+            <div class="button-bar">
+                <button class="button button-energized" ng-click="addcart(item,1);closeOption();" ng-disabled="!onechoice.sub">Add to basket</button>
+            </div>
+        </div>
+    </div>
+
+</ion-modal-view>

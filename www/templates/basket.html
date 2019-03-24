@@ -1,0 +1,110 @@
+<ion-view view-title="Basket" ng-controller="BasketCtrl">
+
+
+
+    <ion-nav-buttons side="right">
+        <a ng-if="initialPrice() != '0'" class="button button-clear" ng-click="showDelete();">Edit</a>
+    </ion-nav-buttons>
+
+    <ion-content style="background-color: #f5f5f5;">
+
+        <div>
+        <ion-header-bar align-title="center" style="height: 30px; background-color: #ffe37f; color: #2f1305; font-weight: 400;">
+            <span class="title"  style="text-align: center; font-size: 14px; margin-top: -5px;">Spend £20.81 more to get 20% OFF</span>
+        </ion-header-bar>
+        <div class="spacer" style="width: 300px; height: 20px;"></div>
+        </div>
+
+        <div class="spacer" style="width: 300px; height: 20px;"></div>
+
+
+        <div ng-if="initialPrice() == '0'" class="padding" style="text-align: center;">
+            <i class="icon ion-ios-cart-outline" style="font-size: 90px;"></i>
+
+            <h3>Basket empty</h3>
+
+            <p>Check the menu to add items to the basket</p>
+            <button class="button button-block button-energized disabled">
+                <i class="icon ion-loading-d"></i> Go to checkout
+            </button>
+        </div>
+
+        <div ng-if="initialPrice() != '0'">
+            <div class="padding" style="text-align: center;">
+                <span style="color: #727272; font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;">Order total ({{chkQty()}}
+                    <span ng-if="chkQty() > 1">items)</span>
+                    <span ng-if="chkQty() == 1">item)</span></span>
+
+                <h1 style="font-size: 50px; margin-top: 0; font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;">
+                    £{{initialPrice()|number:2}}</h1>
+
+                <div class="button-bar">
+                    <a style="font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;"
+                       class="button button-small" ng-click="setOrdertype(0)" ng-class="{'active': checkout.delivery}">Delivery</a>
+                    <a style="font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;"
+                       class="button button-small" ng-click="setOrdertype(1)"
+                       ng-class="{'active': checkout.collection}">Collection</a>
+                </div>
+                <a style="font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif; color: #4a4a4a; border-radius: 3px;"
+                   href="#/app/checkout" class="button button-block button-energized">Go to checkout</a>
+            </div>
+
+            <ion-list class="list" can-swipe="listCanSwipe" show-delete="shouldShowDelete">
+                <ion-item ng-repeat="item in basketitems" class="item item-icon-right item-remove-animate">
+
+
+                  <span class="item-note"
+                        style="font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; font-weight: bold; color: #129934;">
+                      <span style="margin-right: 40px;">
+                      <select ng-model="item.qty" style="-webkit-appearance: none;
+    appearance: none; text-indent: 4px; width: 25px; color: rgba(0,0,0,0);
+  text-shadow: 0 0 0 #000;">
+                          <option ng-repeat="o in selectRange" ng-selected="{{o==item.qty}}" value="{{o}}">
+                              {{o}}
+                          </option>
+                      </select>
+                  </span>
+
+                      £{{item.price*item.qty|number:2}}</span>
+
+
+                    <span style="font-size: 14px; font-weight: 600;">{{item.title}} {{getSubname(item)}}</span>
+
+
+                    <ion-option-button class="button-assertive"
+                                       ng-click="removecart($index)">
+                        Delete
+                    </ion-option-button>
+                    <ion-delete-button class="ion-minus-circled"
+                                       ng-click="removecart($index)">
+                    </ion-delete-button>
+                </ion-item>
+            </ion-list>
+
+
+            <div class="spacer" style="width: 300px; height: 20px;"></div>
+
+            <div class="padding" style="background-color: #FFFFFF;">
+                <ul style="padding-left: 10px; padding-right: 45px;">
+                    <li>
+                        SUBTOTAL
+                        <span class="item-note"
+                              style="font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; font-weight: bold; color: #129934;">£{{initialPrice()|number:2}}</span>
+                    </li>
+                    <li ng-if="checkout.delivery">
+                        Delivery fee
+                        <span class="item-note"
+                              style="font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; font-weight: bold; color: #129934;">£{{checkout.deliveryfee|number:2}}</span>
+                    </li>
+                    <li>
+                        <b>TOTAL</b>
+                        <span class="item-note"
+                              style="font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; font-weight: bold; color: #129934;">£{{initialPrice()|number:2}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="spacer" style="width: 300px; height: 70px;"></div>
+    </ion-content>
+</ion-view>

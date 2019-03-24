@@ -1,0 +1,22 @@
+<ion-view view-title="{{pageTitle}}">
+  <ion-content style="background-color: #f5f5f5;" has-header="false">
+      <ion-refresher
+              pulling-text="Pull to refresh..."
+              on-refresh="doRefresh()">
+      </ion-refresher>
+      <div class="">
+      <ion-slide-box auto-play="true" show-pager="true" does-continue="true" on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+              <img width="100%" src="http://cache3.asset-cache.net/gc/114357955-portrait-of-japanese-chef-presenting-sushi-gettyimages.jpg?v=1&c=IWSAsset&k=2&d=QmXLRh8iH2Wfy3ujig63ohmsBMNkQIKz23aQx1B4Qqyx5IKBmclww%2F%2F0cJe51cN7" />
+          </ion-slide>
+          <ion-slide>
+              <img width="100%"  src="http://flamingcow.co.uk/wp-content/uploads/2015/02/takeaway-940x283.jpg" />
+          </ion-slide>
+          <ion-slide>
+              <img width="100%" src="http://flamingcow.co.uk/wp-content/uploads/2015/02/takeaway-940x283.jpg" />
+          </ion-slide>
+      </ion-slide-box>
+      </div>
+      <div class="spacer" style="width: 300px; height: 70px;"></div>
+  </ion-content>
+</ion-view>

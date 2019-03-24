@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+      <link href="lib/Ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
+      <!--<script src="lib/ionic-modal-select/dist/ionic-modal-select.js"></script>-->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
+      <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+<!-- <script src="cordova.js"></script> -->
+
+
+      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+      <script type="text/javascript" src="lib/angular-payments/lib/angular-payments.js">
+      </script>
+
+      <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+  </head>
+
+  <body ng-app="starter">
+    <ion-nav-view enable-menu-with-back-views="false"></ion-nav-view>
+
+
+
+
+    <ion-tabs class="tabs-icon-top">
+
+        <ion-tab title="Home" href="#/app/home" icon-on="ion-ios-home" icon-off="icon ion-ios-home-outline">
+            <!-- Tab 1 content -->
+        </ion-tab>
+
+        <ion-tab title="Order Now" href="#/app/playlists" icon-on="ion-ios-plus" icon-off="icon ion-ios-plus-outline">
+            <!-- Tab 1 content -->
+        </ion-tab>
+
+        <ion-tab title="Deals" href="#/app/deal" icon-on="ion-ios-star" icon-off="ion-ios-star-outline">
+            <!-- Tab 2 content -->
+        </ion-tab>
+
+        <ion-tab title="My account" href="#/app/account" icon-on="ion-ios-list" icon-off="ion-ios-list-outline">
+            <!-- Tab 3 content -->
+        </ion-tab>
+        <ion-tab title="Info" href="#/app/settings" icon-on="ion-ios-information" icon-off="ion-ios-information-outline">
+            <!-- Tab 3 content -->
+        </ion-tab>
+
+    </ion-tabs>
+
+   <!--<div class="tabs tabs-icon-top">-->
+       <!--<a class="tab-item" href="#/app/home">-->
+           <!--<i class="icon ion-ios-home"></i>-->
+           <!--Home-->
+       <!--</a>-->
+       <!--<a class="tab-item" href="#/app/playlists">-->
+    <!--<i class="icon ion-ios-plus-outline"></i>-->
+    <!--Order now-->
+  <!--</a>-->
+  <!--&lt;!&ndash;<a class="tab-item" href="#/app/basket">&ndash;&gt;-->
+      <!--&lt;!&ndash;<i class="icon ion-ios-cart-outline"></i>&ndash;&gt;-->
+      <!--&lt;!&ndash;Basket&ndash;&gt;-->
+  <!--&lt;!&ndash;</a>&ndash;&gt;-->
+       <!--<a class="tab-item" href="#/app/deal">-->
+       <!--<i class="icon ion-ios-star-outline"></i>-->
+       <!--Deals-->
+       <!--</a>-->
+  <!--<a class="tab-item" href="#/app/account">-->
+    <!--<i class="icon ion-ios-list-outline"></i>-->
+    <!--My account-->
+  <!--</a>-->
+  <!--<a class="tab-item" href="#/app/settings">-->
+    <!--<i class="icon ion-ios-gear-outline"></i>-->
+    <!--Settings-->
+  <!--</a>-->
+
+<!--</div>-->
+
+  </body>
+</html>

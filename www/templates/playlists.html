@@ -1,0 +1,18 @@
+<ion-view view-title="{{pageTitle}}" hide-back-button="true">
+    <ion-nav-buttons side="right">
+        <a ng-if="!closed" href="#/app/basket" class="button button-energized" style="color: #000000;">
+            <i class="icon ion-ios-cart-outline"></i> £{{initialPrice()|number:2}}
+        </a>
+        <a style="font-size: 16px;" class="button" ng-if="closed">Closed</a>
+    </ion-nav-buttons>
+    <ion-content style="background-color: #f5f5f5;">
+        <div class="spacer" style="width: 300px; height: 20px;"></div>
+        <ion-list>
+        <a class="item item-icon-right" ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+            {{playlist.title}} <span class="item-note" ng-if="chkCatQty(playlist.id) > 0">{{chkCatQty(playlist.id)}}</span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+    </ion-list>
+        <div class="spacer" style="width: 300px; height: 70px;"></div>
+  </ion-content>
+</ion-view>

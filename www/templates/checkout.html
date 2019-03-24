@@ -1,0 +1,89 @@
+<ion-view view-title="Checkout" ng-controller="CheckoutCtrl">
+
+
+    <ion-content style="background-color: #f5f5f5;">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+
+
+
+
+
+         <div class="padding" style="text-align: center;">
+          <span style="color: #727272; font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;">Order total ({{chkQty()}}
+                    <span ng-if="chkQty() > 1">items)</span>
+                    <span ng-if="chkQty() == 1">item)</span></span>
+             <h1 style="font-size: 50px; margin-top: 0; font-family: Helvetica Neue Light, HelveticaNeue-Light, Helvetica Neue, Calibri, Helvetica, Arial, sans-serif;">
+                 £{{initialPrice()|number:2}}</h1>
+             <div class="button-bar">
+                 <a class="button button-small" ng-click="setOrdertype(0)" ng-class="checkout.delivery ? 'activated': ''">Pay in cash</a>
+                 <a class="button button-small" ng-click="setOrdertype(1)" ng-class="!checkout.delivery ? 'activated': ''">Online payment</a>
+             </div>
+</div>
+
+
+        <form name="checkoutForm" stripe-form="stripeCallback" ng-submit="onSubmit()" data-abide>
+
+            <div class="list">
+
+
+
+                    <label class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input ng-model="name"  type="text"/>
+                    </label>
+
+                    <label class="item item-input">
+                        <span class="input-label">Address</span>
+                        <input ng-model="address" type="text"/>
+                    </label>
+
+            </div>
+
+            <div class="list">
+
+                <label class="item item-input">
+                    <span class="input-label">Card Number</span>
+                    <input ng-model="number" name="number" payments-format="card" payments-validate="card" type="tel"/>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Expiry Date</span>
+                    <input ng-model="expiry" name="expiry" payments-format="expiry" payments-validate="expiry" type="tel"/>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Security Code</span>
+                    <input ng-model="cvc" name="cvc" payments-format="cvc" payments-validate="cvc" type="tel"/>
+                </label>
+
+                <div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">
+                    <div ng-messages-include="error-list.html"></div>
+                </div>
+
+            </div>
+
+
+            <alert ng-if="stripeError" type="'alert'" close="hideAlerts()">
+                Stripe returned an error: {{stripeError}}
+            </alert>
+
+            <alert ng-if="stripeToken" close="hideAlerts()">
+                Stripe successfully acquired! Token: {{stripeToken}}
+            </alert>
+
+            <div class="clearfix">
+                <div class="right">
+                    <button class="button button-full button-energized" type="submit" ng-disabled="checkoutForm.$invalid">Place Order</button>
+                </div>
+            </div>
+
+        </form>
+
+
+
+
+
+
+        <div class="spacer" style="width: 300px; height: 70px;"></div>
+  </ion-content>
+</ion-view>

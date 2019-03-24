@@ -1,0 +1,28 @@
+<ion-view cache-view="false">
+    <ion-nav-title>
+        {{playlist[0].title}}
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <a ng-if="!closed" href="#/app/basket" class="button button-energized" style="color: #000000;">
+            <i class="icon ion-ios-cart-outline"></i> £{{initialPrice()|number:2}}
+        </a>
+        <a style="font-size: 16px;" class="button" ng-if="closed">Closed</a>
+    </ion-nav-buttons>
+  <ion-content style="background-color: #f5f5f5;" has-header="false">
+      <div class="spacer" style="width: 300px; height: 20px;"></div>
+      <ion-list class="list" ng-repeat="abc in playlist.items">
+          <ion-item class="item item-icon-right" style="border-bottom: 1px dotted #f2f2f2;">
+                      <b>{{abc.title}}</b>
+                      <span class="item-note" style="font-family: Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 16px; font-weight: bold; color: #99302a;">£{{abc.price|number:2}}</span>
+                      <p>{{abc.descr}}</p>
+                      <i ng-if="!closed" class="icon ion-ios-plus energized" ng-click="abc.sub ? option(abc) : addcart(abc,0);"></i>
+          </ion-item>
+          <ion-item class="item item-icon-left"  ng-if="chkItem(abc) != -1 && getBasketQty(abc) > 0" style="background-color: #fbfbfb;">
+              <i ng-click="minusBasketQty(abc)" class="icon ion-ios-minus-outline"></i>
+              <a style="color: #129934;"><i class="ion-checkmark-round"></i> £{{abc.price * getBasketQty(abc)|number:2}}</a>
+              <span class="item-note" style="color: #129934; font-size: 16px;">{{getBasketQty(abc)}}</span>
+          </ion-item>
+      </ion-list>
+      <div class="spacer" style="width: 300px; height: 70px;"></div>
+  </ion-content>
+</ion-view>

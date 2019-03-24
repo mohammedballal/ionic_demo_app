@@ -1,0 +1,12 @@
+<ion-view view-title="Browse">
+ 
+      
+      <ion-content>
+       <ion-list>
+           <ion-item ng-repeat="x in names|orderBy:'City'" href="#/app/browser/{{x.City}}">
+           {{ x.Name + ', ' + x.Country+', '+x.City}}
+           </ion-item>
+         </ion-list>
+      </ion-content>
+   
+</ion-view>
